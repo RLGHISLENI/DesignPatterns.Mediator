@@ -8,13 +8,19 @@ namespace DesignPatterns.Mediator.Controllers
     [Route("v1/customers")]
     public class CustomerController : ControllerBase
     {
+        private readonly ICustomerHandler _handler;
+
+        public CustomerController(ICustomerHandler customerHandler)
+        {
+            _handler = customerHandler;
+        }
+
         [HttpPost]
         [Route("")]
         public CustomerResponse Create(
-           [FromServices] ICustomerHandler customerHandler,
            [FromBody] CustomerRequest request)
         {
-            return customerHandler.Handle(request);
+            return _handler.Handle(request);
         }
     }
 }

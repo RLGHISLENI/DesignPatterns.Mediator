@@ -8,13 +8,19 @@ namespace DesignPatterns.Mediator.Controllers
     [Route("v1/caterers")]
     public class CaterersController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
+        public CaterersController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
         [HttpPost]
         [Route("")]
         public Task<CatererResponse> Create(
-           [FromServices] IMediator mediator,
            [FromBody] CatererRequest request)
         {
-            return mediator.Send(request);
+            return _mediator.Send(request);
         }
     }
 }
