@@ -18,13 +18,13 @@ Utilização básica do padrão de projeto Mediator de modo manual e através do
  $ dotnet add package MediatR.Extensions.Microsoft.DependencyInjection
 ```
 
-## Injetando a depência manualmente
+## Injetando a dependência manualmente
 
 ```vb
 builder.Services.AddTransient<ICustomerHandler, CustomerHandler>();
 ```
 
-## Injetando a depência dinâmica com o MediatR
+## Injetando a dependência dinâmicamente com o MediatR
 
 ```vb
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
